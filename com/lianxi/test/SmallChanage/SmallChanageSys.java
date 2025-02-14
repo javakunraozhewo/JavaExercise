@@ -6,7 +6,6 @@ public class SmallChanageSys {
     public static void main(String[] args) {
         //导入scanner包用于捕捉键盘输入内容
         Scanner scanner = new Scanner(System.in);
-        String[][] s = new String[0][3];
         Person person = new Person("用户1", 18, '男', 0.0);
 
         int count = 0;//计数器
