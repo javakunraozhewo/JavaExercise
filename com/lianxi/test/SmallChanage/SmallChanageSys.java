@@ -1,14 +1,12 @@
 package com.lianxi.test.SmallChanage;
 
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class SmallChanageSys {
     public static void main(String[] args) {
         //导入scanner包用于捕捉键盘输入内容
         Scanner scanner = new Scanner(System.in);
+        String[][] s = new String[0][3];
         Person person = new Person("用户1", 18, '男', 0.0);
 
         int count = 0;//计数器
@@ -51,14 +49,10 @@ public class SmallChanageSys {
                         break;
                     case 2:
                         while (true) {
-                            //获取当前时间
-                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                            LocalDateTime now = LocalDateTime.now();
-                            String dateStr = now.format(formatter);
 
                             System.out.println("请输入本次入账金额：");
                             double a = scanner.nextDouble();
-                            person.ruzhang(a, dateStr, count);
+                            person.ruzhang(a, count);
                             count++;
 
                             System.out.println("是否继续？(y/n)");
@@ -73,16 +67,12 @@ public class SmallChanageSys {
 
                     case 3:
                         while (true) {
-                            //获取当前时间
-                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                            LocalDateTime now = LocalDateTime.now();
-                            String dateStr = now.format(formatter);
 
                             System.out.println("请输入本次消费种类名字：");
                             String s2 = scanner.next();
                             System.out.println("请输入本次消费金额：");
-                            double a = scanner.nextDouble();
-                            if (person.xfyz(a, dateStr, count, s2)) {
+                            double a = scanner.nextInt();
+                            if (person.xfyz(a, count, s2)) {
                                 count++;
                             }
 
