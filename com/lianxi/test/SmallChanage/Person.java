@@ -1,5 +1,8 @@
 package com.lianxi.test.SmallChanage;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Person {
     private String name;
     private int age;
@@ -15,12 +18,12 @@ public class Person {
         this.money = money;
     }
 
-    public void ruzhang (double money, String rq, int count) {
+    public void ruzhang (double money, int count) {
         this.money += money;
         String[][] s = new String[count + 1][4];
         s[count][0] = "收益入账";
         s[count][1] = ("+" + money);
-        s[count][2] = rq;
+        s[count][2] = time();
         s[count][3] = ("余额：" + this.money);
         if (sount == 0) {
             for (int i = 0; i < mx.length; i++) {
@@ -33,12 +36,12 @@ public class Person {
         }
         sount++;
     }
-    public void xiaofei (double money, String rq, int count, String xfname) {
+    public void xiaofei (double money, int count, String xfname) {
         this.money -= money;
         String[][] s = new String[count + 1][4];
         s[count][0] = xfname;
         s[count][1] = ("-" + money);
-        s[count][2] = rq;
+        s[count][2] = time();
         s[count][3] = ("余额：" + this.money);
         if (sount == 0) {
             for (int i = 0; i < mx.length; i++) {
@@ -52,9 +55,9 @@ public class Person {
         sount++;
     }
 
-    public boolean xfyz(double money, String rq, int count, String xfname) {
+    public boolean xfyz(double money, int count, String xfname) {
         if (this.money - money >= 0) {
-            xiaofei(money, rq, count, xfname);
+            xiaofei(money, count, xfname);
             return true;
         } else {
             System.out.println("吊毛，你没那么多钱消费。");
@@ -79,6 +82,13 @@ public class Person {
             }
             System.out.println();
         }
+    }
+
+    public String time() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String dateStr = now.format(formatter);
+        return dateStr;
     }
 
     public String getName() {
