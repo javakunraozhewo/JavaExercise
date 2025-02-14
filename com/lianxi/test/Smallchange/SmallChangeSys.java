@@ -1,4 +1,4 @@
-package com.lianxi.test.SmallChange;
+package com.lianxi.test.Smallchange;
 
 import java.util.Scanner;
 
